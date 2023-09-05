@@ -13,16 +13,15 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "giornata")
-public class Giornata {
+@Table(name = "scommessa")
+public class Scommessa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_giornata;
+    private Long id_scommessa;
 
-    @Column(name="data_in",nullable = false)
-    private LocalDate data_in;
-
-    @Column(name="data_out",nullable = false)
-    private LocalDate data_out;
+    @Column(name = "ris_casa", nullable = false)
+    private int risultatoCasa;
+    @Column(name = "ris_ospite", nullable = false)
+    private int risultatoOspite;
 
 }
