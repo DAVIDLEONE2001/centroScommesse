@@ -1,28 +1,25 @@
 package com.example.springsocial.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "giornata")
 public class Giornata {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_giornata;
+    private Long id;
 
-    @Column(name="data_in",nullable = false)
+    @Column(name="data_in")
     private LocalDate data_in;
 
-    @Column(name="data_out",nullable = false)
+    @Column(name="data_out")
     private LocalDate data_out;
 
 }

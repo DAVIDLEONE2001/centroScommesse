@@ -1,27 +1,35 @@
 package com.example.springsocial.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Getter
-@Setter
+
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "scommessa")
 public class Scommessa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_scommessa;
+    private Long id;
 
     @Column(name = "ris_casa", nullable = false)
     private int risultatoCasa;
     @Column(name = "ris_ospite", nullable = false)
     private int risultatoOspite;
+
+    @JoinColumn(name = "partita_id")
+    @ManyToOne
+    private Partita partita;
+
+    @JoinColumn(name = "user_id")
+    @ManyToOne
+    private User user;
+
+
 
 }
