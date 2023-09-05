@@ -4,9 +4,9 @@ server:
 
 spring:
     datasource:
-        url: jdbc:mysql://sql11.freesqldatabase.com:3306/sql11644501?allowPublicKeyRetrieval=true&useSSL=FALSE&serverTimezone=Europe/Rome
-        username: sql11644501
-        password: NR2LEad8Ar
+        url: jdbc:mysql://solvingteamdev.cgu83m9eljvq.eu-south-1.rds.amazonaws.com:3306/centroscommessedev?allowPublicKeyRetrieval=true&useSSL=FALSE&serverTimezone=Europe/Rome
+        username: centroscommesse
+        password: zpsQUnq30qn1IUC
 
     jpa:
         show-sql: true
