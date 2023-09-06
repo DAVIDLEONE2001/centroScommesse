@@ -1,0 +1,1783 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+	<changeSet author="baldi (generated)" id="1640176903453-1">
+		<createTable tableName="account">
+			<column autoIncrement="true" name="id_account" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="nominativo" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-2">
+		<createTable tableName="azienda">
+			<column autoIncrement="true" name="id_azienda" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="codice_univoco" type="VARCHAR(255)" />
+			<column name="email_contatto" type="VARCHAR(255)" />
+			<column name="indirizzo" type="VARCHAR(255)" />
+			<column name="nome_contatto" type="VARCHAR(255)" />
+			<column name="pec" type="VARCHAR(255)" />
+			<column name="piva" type="VARCHAR(255)" />
+			<column name="ragione_sociale" type="VARCHAR(255)" />
+			<column name="tel" type="VARCHAR(255)" />
+			<column name="tel_contatto" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-3">
+		<createTable tableName="budget">
+			<column autoIncrement="true" name="id_budget" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="anno" type="INT" />
+			<column name="data_in" type="datetime" />
+			<column name="margine" type="DOUBLE" />
+			<column name="r1" type="DOUBLE" />
+			<column name="r10" type="DOUBLE" />
+			<column name="r11" type="DOUBLE" />
+			<column name="r12" type="DOUBLE" />
+			<column name="r2" type="DOUBLE" />
+			<column name="r3" type="DOUBLE" />
+			<column name="r4" type="DOUBLE" />
+			<column name="r5" type="DOUBLE" />
+			<column name="r6" type="DOUBLE" />
+			<column name="r7" type="DOUBLE" />
+			<column name="r8" type="DOUBLE" />
+			<column name="r9" type="DOUBLE" />
+			<column name="tipo_budget" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="id_commessa" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-4">
+		<createTable tableName="certificazione">
+			<column autoIncrement="true" name="id_certificazione"
+				type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="data_in" type="datetime" />
+			<column name="data_out" type="datetime" />
+			<column name="id_risorsa" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="id_tipo_certificazione" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-5">
+		<createTable tableName="commessa">
+			<column autoIncrement="true" name="id_commessa" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="cf" type="INT" />
+			<column name="codice" type="VARCHAR(255)" />
+			<column name="data_in" type="datetime" />
+			<column name="data_out" type="datetime" />
+			<column name="descrizione" type="VARCHAR(255)" />
+			<column name="fatturabile" type="BIT(1)" />
+			<column name="parent_id_commessa" type="BIGINT" />
+			<column name="importo" type="DOUBLE" />
+			<column name="note" type="VARCHAR(255)" />
+			<column name="tipo_commessa" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="id_account" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="id_azienda" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="cliente_id_azienda" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="pm_id_risorsa" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-6">
+		<createTable tableName="costo_risorsa">
+			<column autoIncrement="true" name="id_costo" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="costo_gg" type="DOUBLE" />
+			<column name="costo_mm" type="DOUBLE" />
+			<column name="mm_in" type="INT" />
+			<column name="mm_out" type="INT" />
+			<column name="note" type="VARCHAR(255)" />
+			<column name="year_in" type="INT" />
+			<column name="year_out" type="INT" />
+			<column name="id_risorsa" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-7">
+		<createTable tableName="documento">
+			<column autoIncrement="true" name="id_documento" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="data_in" type="datetime" />
+			<column name="data_out" type="datetime" />
+			<column name="descrizione" type="VARCHAR(255)" />
+			<column name="file" type="LONGBLOB" />
+			<column name="note" type="VARCHAR(255)" />
+			<column name="id_commessa" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-8">
+		<createTable tableName="event">
+			<column autoIncrement="true" name="id" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="anno" type="INT" />
+			<column name="azienda" type="VARCHAR(255)" />
+			<column name="class_risorsa" type="VARCHAR(255)" />
+			<column name="cliente" type="VARCHAR(255)" />
+			<column name="commessa" type="VARCHAR(255)" />
+			<column name="commessa_padre" type="VARCHAR(255)" />
+			<column name="costo" type="DOUBLE" />
+			<column name="costo_mensile" type="DOUBLE" />
+			<column name="costo_unitario" type="DOUBLE" />
+			<column name="data_out" type="datetime" />
+			<column name="mese" type="INT" />
+			<column name="note" type="VARCHAR(255)" />
+			<column name="qta" type="INT" />
+			<column name="refid" type="BIGINT" />
+			<column name="ricavo" type="DOUBLE" />
+			<column name="ricavo_unitario" type="DOUBLE" />
+			<column name="risorsa" type="VARCHAR(255)" />
+			<column name="tipo_attivita" type="VARCHAR(255)" />
+			<column name="tipo_evento" type="VARCHAR(255)" />
+			<column name="tipo_rapporto_lavoro" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-9">
+		<createTable tableName="nel">
+			<column autoIncrement="true" name="id_nel" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="data" type="datetime" />
+			<column name="importo" type="INT" />
+			<column name="note" type="VARCHAR(255)" />
+			<column name="id_ordine" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-10">
+		<createTable tableName="ordine">
+			<column autoIncrement="true" name="id_ordine" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="data_in" type="datetime" />
+			<column name="data_out" type="datetime" />
+			<column name="importo" type="DOUBLE" />
+			<column name="note" type="VARCHAR(255)" />
+			<column name="id_azienda" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="id_commessa" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-11">
+		<createTable tableName="rapporto_attivita">
+			<column autoIncrement="true" name="id_rapporto_attivita"
+				type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="anno" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="mese" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="note_invio" type="VARCHAR(255)" />
+			<column name="ore_extra" type="VARCHAR(255)" />
+			<column name="ore_std" type="VARCHAR(255)" />
+			<column name="id_commessa" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="id_risorsa" type="BIGINT" />
+			<column name="id_stato" type="BIGINT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-12">
+		<createTable tableName="rapporto_lavoro">
+			<column autoIncrement="true" name="id_rapporto_Lavoro"
+				type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="data_in" type="datetime" />
+			<column name="data_out" type="datetime" />
+			<column name="id_risorsa" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="id_tipo_rapporto" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-13">
+		<createTable tableName="risorsa">
+			<column autoIncrement="true" name="id_risorsa" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="cod_fis" type="VARCHAR(255)" />
+			<column name="cognome" type="VARCHAR(255)" />
+			<column name="cv" type="LONGBLOB" />
+			<column name="data_in" type="datetime" />
+			<column name="data_nascita" type="datetime" />
+			<column name="data_out" type="datetime" />
+			<column name="livello_ccnl" type="INT" />
+			<column name="nome" type="VARCHAR(255)" />
+			<column name="note" type="VARCHAR(255)" />
+			<column name="sesso" type="VARCHAR(255)" />
+			<column name="skill" type="VARCHAR(255)" />
+			<column name="id_azienda" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="id_tipo_titolo" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-14">
+		<createTable tableName="tariffa">
+			<column autoIncrement="true" name="id_tariffa" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="importo_gg" type="DOUBLE" />
+			<column name="mm_in" type="INT" />
+			<column name="mm_out" type="INT" />
+			<column name="note" type="VARCHAR(255)" />
+			<column name="year_in" type="INT" />
+			<column name="year_out" type="INT" />
+			<column name="id_commessa" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="id_risorsa" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-15">
+		<createTable tableName="tipo_certificazione">
+			<column autoIncrement="true" name="id_tipo_certificazione"
+				type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="descrizione" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-16">
+		<createTable tableName="tipo_rapporto_lavoro">
+			<column autoIncrement="true" name="id_tipo_rapporto"
+				type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="descrizione" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-17">
+		<createTable tableName="tipo_stato_rapporto">
+			<column autoIncrement="true" name="id_tipo_stato_rapporto"
+				type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="descrizione" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-18">
+		<createTable tableName="tipo_titolo_studio">
+			<column autoIncrement="true" name="id_tipo_titolo"
+				type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="descrizione" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-19">
+		<createTable tableName="user">
+			<column autoIncrement="true" name="id_user" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="email" type="VARCHAR(255)" />
+			<column name="enabled" type="BIT(1)" />
+			<column name="password" type="VARCHAR(255)" />
+			<column name="username" type="VARCHAR(255)" />
+			<column name="id_risorsa" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-20">
+		<createIndex indexName="FK2owllx0ec534j5cyhg6m5wu3c"
+			tableName="risorsa">
+			<column name="id_azienda" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-21">
+		<createIndex indexName="FK31ayj5t43du11rsx8njmehoig"
+			tableName="costo_risorsa">
+			<column name="id_risorsa" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-22">
+		<createIndex indexName="FK3aapvufhnn2285ww6j2kajjq7"
+			tableName="commessa">
+			<column name="cliente_id_azienda" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-23">
+		<createIndex indexName="FK5n4l39v8o53gjjborwu9pb9j7"
+			tableName="risorsa">
+			<column name="id_tipo_titolo" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-24">
+		<createIndex indexName="FK6xe6iflolw6j84ps9f6mkfulm"
+			tableName="budget">
+			<column name="id_commessa" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-25">
+		<createIndex indexName="FK81s3186thdcogtsecys1n38hf"
+			tableName="documento">
+			<column name="id_commessa" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-26">
+		<createIndex indexName="FK8pqo68i50wyp5ltv6pddl3bmr"
+			tableName="certificazione">
+			<column name="id_risorsa" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-27">
+		<createIndex indexName="FK8rfpnui3non15vx66395j6g0c"
+			tableName="certificazione">
+			<column name="id_tipo_certificazione" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-28">
+		<createIndex indexName="FK99ds1rp1qn98nia82hu5n52nt"
+			tableName="rapporto_attivita">
+			<column name="id_commessa" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-29">
+		<createIndex indexName="FKbnkbdyo6gwnlxil0uu9e64bp7"
+			tableName="nel">
+			<column name="id_ordine" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-30">
+		<createIndex indexName="FKcxxsnrwntvscv6abxjala0uew"
+			tableName="rapporto_attivita">
+			<column name="id_risorsa" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-31">
+		<createIndex indexName="FKdqnhpxkmbe1oyjdhausfjf5qo"
+			tableName="rapporto_attivita">
+			<column name="id_stato" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-32">
+		<createIndex indexName="FKeosc6c18nb837yjb0ndxje34f"
+			tableName="rapporto_lavoro">
+			<column name="id_risorsa" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-33">
+		<createIndex indexName="FKfhwl2do4rlkm051ldtt4kujfw"
+			tableName="user">
+			<column name="id_risorsa" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-34">
+		<createIndex indexName="FKi6ntioyvq4vtmyhb1c8t3wc9u"
+			tableName="rapporto_lavoro">
+			<column name="id_tipo_rapporto" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-35">
+		<createIndex indexName="FKj61dt3i5ynrt4gn9px3m4621y"
+			tableName="commessa">
+			<column name="pm_id_risorsa" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-36">
+		<createIndex indexName="FKl95h0w5d3l5m0d43qgh4w3s5c"
+			tableName="tariffa">
+			<column name="id_commessa" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-37">
+		<createIndex indexName="FKma4avpmdeqbdvgntgy59pt907"
+			tableName="commessa">
+			<column name="id_azienda" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-38">
+		<createIndex indexName="FKnqr0ay2ekbbdb9cgdp5mdf33i"
+			tableName="ordine">
+			<column name="id_azienda" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-39">
+		<createIndex indexName="FKq0regco7lqlgfs1e8lqls7nh"
+			tableName="commessa">
+			<column name="id_account" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-40">
+		<createIndex indexName="FKrgleoobhu9j6s0l7igxv1pfq7"
+			tableName="ordine">
+			<column name="id_commessa" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-41">
+		<createIndex indexName="FKsehk4gxut97t98lqd78ipcauo"
+			tableName="tariffa">
+			<column name="id_risorsa" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-42">
+		<addForeignKeyConstraint
+			baseColumnNames="id_azienda" baseTableName="risorsa"
+			constraintName="FK2owllx0ec534j5cyhg6m5wu3c" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_azienda" referencedTableName="azienda"
+			validate="true" />
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-43">
+		<addForeignKeyConstraint
+			baseColumnNames="id_risorsa" baseTableName="costo_risorsa"
+			constraintName="FK31ayj5t43du11rsx8njmehoig" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_risorsa" referencedTableName="risorsa"
+			validate="true" />
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-44">
+		<addForeignKeyConstraint
+			baseColumnNames="cliente_id_azienda" baseTableName="commessa"
+			constraintName="FK3aapvufhnn2285ww6j2kajjq7" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_azienda" referencedTableName="azienda"
+			validate="true" />
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-45">
+		<addForeignKeyConstraint
+			baseColumnNames="id_tipo_titolo" baseTableName="risorsa"
+			constraintName="FK5n4l39v8o53gjjborwu9pb9j7" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_tipo_titolo"
+			referencedTableName="tipo_titolo_studio" validate="true" />
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-46">
+		<addForeignKeyConstraint
+			baseColumnNames="id_commessa" baseTableName="budget"
+			constraintName="FK6xe6iflolw6j84ps9f6mkfulm" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_commessa" referencedTableName="commessa"
+			validate="true" />
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-47">
+		<addForeignKeyConstraint
+			baseColumnNames="id_commessa" baseTableName="documento"
+			constraintName="FK81s3186thdcogtsecys1n38hf" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_commessa" referencedTableName="commessa"
+			validate="true" />
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-48">
+		<addForeignKeyConstraint
+			baseColumnNames="id_risorsa" baseTableName="certificazione"
+			constraintName="FK8pqo68i50wyp5ltv6pddl3bmr" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_risorsa" referencedTableName="risorsa"
+			validate="true" />
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-49">
+		<addForeignKeyConstraint
+			baseColumnNames="id_tipo_certificazione"
+			baseTableName="certificazione"
+			constraintName="FK8rfpnui3non15vx66395j6g0c" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_tipo_certificazione"
+			referencedTableName="tipo_certificazione" validate="true" />
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-50">
+		<addForeignKeyConstraint
+			baseColumnNames="id_commessa" baseTableName="rapporto_attivita"
+			constraintName="FK99ds1rp1qn98nia82hu5n52nt" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_commessa" referencedTableName="commessa"
+			validate="true" />
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-51">
+		<addForeignKeyConstraint
+			baseColumnNames="id_ordine" baseTableName="nel"
+			constraintName="FKbnkbdyo6gwnlxil0uu9e64bp7" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_ordine" referencedTableName="ordine"
+			validate="true" />
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-52">
+		<addForeignKeyConstraint
+			baseColumnNames="id_risorsa" baseTableName="rapporto_attivita"
+			constraintName="FKcxxsnrwntvscv6abxjala0uew" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_risorsa" referencedTableName="risorsa"
+			validate="true" />
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-53">
+		<addForeignKeyConstraint
+			baseColumnNames="id_stato" baseTableName="rapporto_attivita"
+			constraintName="FKdqnhpxkmbe1oyjdhausfjf5qo" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_tipo_stato_rapporto"
+			referencedTableName="tipo_stato_rapporto" validate="true" />
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-54">
+		<addForeignKeyConstraint
+			baseColumnNames="id_risorsa" baseTableName="rapporto_lavoro"
+			constraintName="FKeosc6c18nb837yjb0ndxje34f" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_risorsa" referencedTableName="risorsa"
+			validate="true" />
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-55">
+		<addForeignKeyConstraint
+			baseColumnNames="id_risorsa" baseTableName="user"
+			constraintName="FKfhwl2do4rlkm051ldtt4kujfw" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_risorsa" referencedTableName="risorsa"
+			validate="true" />
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-56">
+		<addForeignKeyConstraint
+			baseColumnNames="id_tipo_rapporto" baseTableName="rapporto_lavoro"
+			constraintName="FKi6ntioyvq4vtmyhb1c8t3wc9u" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_tipo_rapporto"
+			referencedTableName="tipo_rapporto_lavoro" validate="true" />
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-57">
+		<addForeignKeyConstraint
+			baseColumnNames="pm_id_risorsa" baseTableName="commessa"
+			constraintName="FKj61dt3i5ynrt4gn9px3m4621y" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_risorsa" referencedTableName="risorsa"
+			validate="true" />
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-58">
+		<addForeignKeyConstraint
+			baseColumnNames="id_commessa" baseTableName="tariffa"
+			constraintName="FKl95h0w5d3l5m0d43qgh4w3s5c" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_commessa" referencedTableName="commessa"
+			validate="true" />
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-59">
+		<addForeignKeyConstraint
+			baseColumnNames="id_azienda" baseTableName="commessa"
+			constraintName="FKma4avpmdeqbdvgntgy59pt907" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_azienda" referencedTableName="azienda"
+			validate="true" />
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-60">
+		<addForeignKeyConstraint
+			baseColumnNames="id_azienda" baseTableName="ordine"
+			constraintName="FKnqr0ay2ekbbdb9cgdp5mdf33i" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_azienda" referencedTableName="azienda"
+			validate="true" />
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-61">
+		<addForeignKeyConstraint
+			baseColumnNames="id_account" baseTableName="commessa"
+			constraintName="FKq0regco7lqlgfs1e8lqls7nh" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_account" referencedTableName="account"
+			validate="true" />
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-62">
+		<addForeignKeyConstraint
+			baseColumnNames="id_commessa" baseTableName="ordine"
+			constraintName="FKrgleoobhu9j6s0l7igxv1pfq7" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_commessa" referencedTableName="commessa"
+			validate="true" />
+	</changeSet>
+	<changeSet author="baldi (generated)" id="1640176903453-63">
+		<addForeignKeyConstraint
+			baseColumnNames="id_risorsa" baseTableName="tariffa"
+			constraintName="FKsehk4gxut97t98lqd78ipcauo" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="id_risorsa" referencedTableName="risorsa"
+			validate="true" />
+	</changeSet>
+	<changeSet author="Stefano Beclea" id="20211222-0"
+		context="dev">
+		<sql>
+			INSERT INTO `account` (`id_account`,`nominativo`)
+			VALUES
+			(1,'nominativoAccount'),(2,'nominativoAccount');
+
+			INSERT INTO `azienda`
+			(`id_azienda`,`codice_univoco`, `email_contatto`,
+			`indirizzo`,
+			`nome_contatto`, `pec`, `piva`, `ragione_sociale`,
+			`tel`,
+			`tel_contatto`)
+			VALUES (1,'SOL','sol@sol.it','Via
+			mosca','Paolo','sol@sol.it','Prova
+			piva','SolvingTeam
+			srl','390237474','26398273477'),
+			(2,'SOL','sol@sol.it','Via
+			mosca','Paolo','sol@sol.it','Prova
+			piva','SolvingTeam','390237474','26398273477'),
+			(3,'kndf','sol@sol.it','Via Via','Paolo','sol@sol.it','piva','nuova
+			azienda srl','390237474','26398273477');
+
+			INSERT INTO
+			`tipo_titolo_studio` (`id_tipo_titolo`,`descrizione`)
+			VALUES (1,'Prova
+			TIPOTITOLODISTUDIO'),
+			(2,'Prova TIPOTITOLODISTUDIO');
+
+			INSERT INTO
+			`risorsa` (`id_risorsa`,`cod_fis`, `cognome`, `cv`, `data_in`,
+			`data_nascita`, `data_out`, `livello_ccnl`, `nome`, `note`, `sesso`,
+			`skill`, `id_azienda`, `id_tipo_titolo`)
+			VALUES
+			(1,'cyhewvcywg6cgeaby','rossi',NULL,'2020-11-04
+			23:00:00.000000','2020-11-04 23:00:00.000000','2020-11-04
+			23:00:00.000000',2,'paolo','nota','MASCHIO','DEV1',1,1),
+			(2,'cyhewvcywg6cgeaby','rossi',NULL,'2020-11-04
+			23:00:00.000000','2020-11-04 23:00:00.000000','2020-11-04
+			23:00:00.000000',2,'paolo','nota','MASCHIO','DEV1',2,2);
+
+			INSERT INTO
+			`commessa` (`id_commessa`,`cf`, `codice`, `data_in`,
+			`data_out`,
+			`descrizione`, `fatturabile`, `pm_id_risorsa`,
+			`parent_id_commessa`,
+			`importo`, `note`, `id_account`, `id_azienda`,
+			`cliente_id_azienda`,
+			`tipo_commessa`)
+			VALUES (1,138484,'prova','2019-12-31
+			23:00:00.000000','2019-12-31
+			23:00:00.000000','prova',true,1,NULL,123,'nota',1,1,1,1),
+			(2,138484,'prova','2019-12-31
+			23:00:00.000000','2019-12-31
+			23:00:00.000000','prova',true,2,NULL,123,'nota',2,2,2,2);
+
+			INSERT INTO
+			`budget`
+			(`id_budget`,`id_commessa`, `anno`, `data_in`,
+			`margine`,
+			`r1`, `r10`,
+			`r11`, `r12`, `r2`, `r3`, `r4`, `r5`, `r6`,
+			`r7`, `r8`,
+			`r9`,
+			`tipo_budget`)
+			VALUES (1,1,2020,'2019-12-31
+			23:00:00.000000',1500,0,0,0,0,0,0,0,0,0,0,0,0,0),
+			(2,2,2020,'2019-12-31
+			23:00:00.000000',1500,0,0,0,0,0,0,0,0,0,0,0,0,0);
+
+
+
+			INSERT INTO
+			`tipo_certificazione` (`id_tipo_certificazione`,`descrizione`)
+			VALUES
+			(1,'Prova TipoCertificazione'),
+			(2,'Prova TipoCertificazione');
+
+			INSERT
+			INTO `certificazione` (`id_certificazione`,`data_in`, `data_out`,
+			`id_risorsa`, `id_tipo_certificazione`)
+			VALUES (1,'2019-12-31
+			23:00:00.000000','2019-12-31 23:00:00.000000',1,1),
+			(2,'2019-12-31
+			23:00:00.000000','2019-12-31 23:00:00.000000',2,2);
+
+			INSERT INTO
+			`costo_risorsa` (`id_costo`,`costo_gg`, `costo_mm`,
+			`mm_in`, `mm_out`,
+			`note`, `year_in`, `year_out`, `id_risorsa`)
+			VALUES
+			(1,150,2000,01,01,'nota1',2021,2021,1),
+			(2,150,2000,02,02,'nota2',2020,2020,2);
+
+			INSERT INTO `documento`
+			(`id_documento`,`data_in`, `data_out`,
+			`descrizione`, `file`, `note`,
+			`id_commessa`)
+			VALUES (1,'2019-12-31 23:00:00.000000','2019-12-31
+			23:00:00.000000','documentoDesc',NULL,'nota',1),
+			(2,'2019-12-31
+			23:00:00.000000','2019-12-31
+			23:00:00.000000','documentoDesc',NULL,'nota',2);
+
+			INSERT INTO `ordine`
+			(`id_ordine`,`data_in`, `data_out`, `importo`, `note`,
+			`id_azienda`,
+			`id_commessa`)
+			VALUES (1,'2019-12-31 23:00:00.000000','2019-12-31
+			23:00:00.000000',0,'nota',1,1),
+			(2,'2019-12-31
+			23:00:00.000000','2019-12-31 23:00:00.000000',0,'nota',2,2);
+
+			INSERT
+			INTO `nel` (`id_nel`,`data`, `importo`, `note`, `id_ordine`)
+			VALUES
+			(1,'2019-12-31 23:00:00.000000',123,'nota',1),
+			(2,'2019-12-31
+			23:00:00.000000',123,'nota',2);
+
+			INSERT INTO `tipo_rapporto_lavoro`
+			(`id_tipo_rapporto`,`descrizione`)
+			VALUES (1,'Prova
+			TIPORAPPORTOLAVORO'),
+			(2,'Prova TIPORAPPORTOLAVORO');
+
+			INSERT INTO
+			`rapporto_lavoro` (`id_rapporto_lavoro`,`data_in`, `data_out`,
+			`id_risorsa`, `id_tipo_rapporto`)
+			VALUES (1,'2019-12-31
+			23:00:00.000000','2019-12-31 23:00:00.000000',1,1),
+			(2,'2019-12-31
+			23:00:00.000000','2019-12-31 23:00:00.000000',2,2);
+
+			INSERT INTO
+			`tariffa` (`id_tariffa`,`importo_gg`, `mm_in`, `mm_out`,
+			`note`,
+			`year_in`, `year_out`, `id_commessa`, `id_risorsa`)
+			VALUES
+			(1,213,11,12,'nota1',2020,2021,1,1),
+			(2,234,09,09,'nota2',2019,2020,2,2);
+
+			INSERT INTO `user`
+			(`id_user`,`email`, `enabled`, `password`, `username`,
+			`id_risorsa`)
+			VALUES (1,'email@aie.it',true,'pass1','user1',1),
+			(2,'email@aie.it',true,'pass1','user1',2);
+
+
+		</sql>
+	</changeSet>
+
+	<changeSet author="Alessio Monterosso" id="1969696">
+		<addColumn tableName="rapporto_attivita">
+			<column name="totale_std" type="int" />
+		</addColumn>
+		<addColumn tableName="rapporto_attivita">
+			<column name="totale_extra" type="int" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet author="Jessica" id="17-01-2022.01">
+		<dropColumn tableName="budget">
+			<column name="data_in" />
+		</dropColumn>
+	</changeSet>
+
+	<changeSet author="Alessio Monterosso" id="19696966">
+		<dropColumn tableName="user">
+			<column name="password" />
+		</dropColumn>
+	</changeSet>
+
+	<changeSet author="Alessio Monterosso" id="19696967">
+		<addColumn tableName="user">
+			<column name="sub" type="varchar(255)" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet author="Alessio Monterosso" id="19696968">
+		<addColumn tableName="risorsa">
+			<column name="telefono" type="varchar(255)" />
+		</addColumn>
+		<addColumn tableName="risorsa">
+			<column name="email" type="varchar(255)" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet author="Alessio Monterosso" id="196969823">
+		<dropColumn tableName="budget">
+			<column name="tipo_budget" />
+		</dropColumn>
+	</changeSet>
+
+	<changeSet author="Alessio Monterosso" id="19696969">
+		<addColumn tableName="budget">
+			<column name="tipo_budget" type="varchar(255)" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet author="Alessio Monterosso" id="111">
+		<dropColumn tableName="commessa">
+			<column name="tipo_commessa" />
+		</dropColumn>
+	</changeSet>
+
+	<changeSet author="Alessio Monterosso" id="222">
+		<addColumn tableName="commessa">
+			<column name="tipo_commessa" type="varchar(255)" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet author="Alessio Monterosso" id="333">
+		<dropColumn tableName="risorsa">
+			<column name="livello_ccnl" />
+		</dropColumn>
+	</changeSet>
+
+	<changeSet author="Alessio Monterosso" id="444">
+		<addColumn tableName="risorsa">
+			<column name="livello_ccnl" type="varchar(255)" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet author="Alessio Monterosso" id="555">
+		<dropColumn tableName="documento">
+			<column name="file" />
+		</dropColumn>
+		<addColumn tableName="documento">
+			<column name="object_key" type="varchar(255)" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet author="Alessio Monterosso" id="666">
+		<dropColumn tableName="risorsa">
+			<column name="cv" />
+		</dropColumn>
+		<addColumn tableName="risorsa">
+			<column name="cv_object_key" type="varchar(255)" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet author="Alessio Monterosso" id="777">
+		<addColumn tableName="risorsa">
+			<column name="profilo_object_key" type="varchar(255)" />
+		</addColumn>
+	</changeSet>
+	<changeSet author="Silvano Paloni" id="888">
+		<addColumn tableName="tariffa">
+			<column name="adg" type="boolean" defaultValue="false" />
+		</addColumn>
+		<addColumn tableName="tariffa">
+			<column name="id_commessa_collegata" type="BIGINT" />
+		</addColumn>
+	</changeSet>
+	<changeSet author="Jessica Petrungaro" id="999">
+		<addColumn tableName="risorsa">
+			<column name="data_variazione_livello_cc" type="datetime" />
+		</addColumn>
+		<addColumn tableName="risorsa">
+			<column name="data_variazione_retribuzione" type="datetime" />
+		</addColumn>
+	</changeSet>
+	<changeSet author="Gabriele Gravotta" id="1309270122">
+		<createTable tableName="budgeth">
+			<column autoIncrement="true" name="id_budgeth" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="anno" type="INT" />
+			<column name="r1" type="DOUBLE" />
+			<column name="r2" type="DOUBLE" />
+			<column name="r3" type="DOUBLE" />
+			<column name="r4" type="DOUBLE" />
+			<column name="r5" type="DOUBLE" />
+			<column name="r6" type="DOUBLE" />
+			<column name="r7" type="DOUBLE" />
+			<column name="r8" type="DOUBLE" />
+			<column name="r9" type="DOUBLE" />
+			<column name="r10" type="DOUBLE" />
+			<column name="r11" type="DOUBLE" />
+			<column name="r12" type="DOUBLE" />
+			<column name="id_commessa" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Silvano" id="22021082">
+		<addColumn tableName="commessa">
+			<column name="margine" type="DOUBLE" />
+		</addColumn>
+		<addColumn tableName="budget">
+			<column name="ricavo" type="DOUBLE" />
+			<column name="costo" type="DOUBLE" />
+		</addColumn>
+		<dropColumn tableName="budget">
+			<column name="margine" />
+			<column name="r1" />
+			<column name="r2" />
+			<column name="r3" />
+			<column name="r4" />
+			<column name="r5" />
+			<column name="r6" />
+			<column name="r7" />
+			<column name="r8" />
+			<column name="r9" />
+			<column name="r10" />
+			<column name="r11" />
+			<column name="r12" />
+		</dropColumn>
+	</changeSet>
+
+	<changeSet author="Silvano" id="22021083">
+		<addColumn tableName="budget">
+			<column name="mese" type="INT" />
+		</addColumn>
+	</changeSet>
+	<changeSet author="Silvano" id="22021084">
+		<dropTable tableName="budgeth" />
+	</changeSet>
+	<changeSet id="Silvano" author="20220203">
+		<addColumn tableName="event">
+			<column name="cf" type="INT" />
+		</addColumn>
+	</changeSet>
+	<changeSet id="Silvano" author="2202214">
+		<addColumn tableName="rapporto_attivita">
+			<column name="giorni_in_presenza" type="INT" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet author="Monterosso" id="100001">
+		<createTable tableName="oda">
+			<column autoIncrement="true" name="id_oda" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="data" type="datetime" />
+			<column name="importo" type="INT" />
+			<column name="note" type="VARCHAR(255)" />
+			<column name="id_ordine_da_fornitore" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Monterosso" id="100002">
+		<createTable tableName="ordine_da_fornitore">
+			<column autoIncrement="true" name="id_ordine_da_fornitore"
+				type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="data_in" type="datetime" />
+			<column name="data_out" type="datetime" />
+			<column name="importo" type="DOUBLE" />
+			<column name="note" type="VARCHAR(255)" />
+			<column name="id_commessa" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet author="Monterosso" id="100003">
+		<renameTable newTableName="ordine_cliente"
+			oldTableName="ordine_da_fornitore" />
+		<renameColumn newColumnName="id_ordine_cliente"
+			oldColumnName="id_ordine_da_fornitore" tableName="oda"
+			columnDataType="BIGINT" />
+	</changeSet>
+
+	<changeSet author="Monterosso" id="100004">
+		<renameColumn newColumnName="id_ordine_cliente"
+			oldColumnName="id_ordine_da_fornitore" tableName="ordine_cliente"
+			columnDataType="BIGINT" />
+	</changeSet>
+
+	<changeSet author="Monterosso" id="100005">
+		<addAutoIncrement columnDataType="BIGINT"
+			columnName="id_ordine_cliente" tableName="ordine_cliente" />
+	</changeSet>
+	<changeSet author="Silvano" id="22022022-1345">
+		<createTable tableName="registro_offerta">
+			<column autoIncrement="true" name="id_registro_offerta"
+				type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="anno" type="int" />
+			<column name="num_progressivo" type="VARCHAR(255)" />
+			<column name="data" type="datetime" />
+			<column name="id_azienda" type="BIGINT" />
+			<column name="id_azienda_cliente" type="BIGINT" />
+			<column name="id_risorsa_autore" type="BIGINT" />
+			<column name="document_object_key" type="VARCHAR(255)" />
+			<column name="descrizione" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+
+	<changeSet id="Monterosso" author="100006">
+		<addColumn tableName="ordine">
+			<column name="numero_ordine" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="ordine_cliente">
+			<column name="numero_ordine" type="VARCHAR(255)" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="100007" author="Tutino">
+		<addColumn tableName="nel">
+			<column name="numero_nel" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="nel">
+			<column name="numero_fattura" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="nel">
+			<column name="data_fattura" type="datetime" />
+		</addColumn>
+		<addColumn tableName="nel">
+			<column name="scadenza_fattura" type="datetime" />
+		</addColumn>
+		<addColumn tableName="nel">
+			<column name="data_pagamento_fattura" type="datetime" />
+		</addColumn>
+		<addColumn tableName="oda">
+			<column name="numero_oda" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="oda">
+			<column name="numero_fattura" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="oda">
+			<column name="data_fattura" type="datetime" />
+		</addColumn>
+		<addColumn tableName="oda">
+			<column name="scadenza_fattura" type="datetime" />
+		</addColumn>
+		<addColumn tableName="oda">
+			<column name="data_pagamento_fattura" type="datetime" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="100008" author="Tutino">
+		<addColumn tableName="nel">
+			<column name="chiuso" type="BIT(1)" />
+		</addColumn>
+		<addColumn tableName="oda">
+			<column name="chiuso" type="BIT(1)" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="100009" author="Tutino">
+		<addDefaultValue tableName="nel" columnName="chiuso"
+			defaultValueBoolean="false" />
+		<addDefaultValue tableName="oda" columnName="chiuso"
+			defaultValueBoolean="false" />
+	</changeSet>
+
+	<changeSet id="1521-28022022" author="Silvano">
+		<addColumn tableName="risorsa">
+			<column name="cateoria_protetta" type="datetime" />
+			<column name="reveribilita" type="boolean" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="1338-28022022" author="Silvano">
+		<renameColumn tableName="risorsa"
+			newColumnName="categoria_protetta" oldColumnName="cateoria_protetta"
+			columnDataType="datetime" />
+		<renameColumn tableName="risorsa"
+			newColumnName="revedibilita" oldColumnName="reveribilita"
+			columnDataType="boolean" />
+		<modifyDataType columnName="categoria_protetta"
+			newDataType="boolean" tableName="risorsa" />
+		<modifyDataType columnName="revedibilita"
+			newDataType="datetime" tableName="risorsa" />
+	</changeSet>
+
+	<changeSet id="100010" author="Tutino">
+		<dropColumn tableName="nel">
+			<column name="chiuso" />
+		</dropColumn>
+		<dropColumn tableName="oda">
+			<column name="chiuso" />
+		</dropColumn>
+		<addColumn tableName="ordine">
+			<column name="chiuso" type="BIT(1)" />
+		</addColumn>
+		<addColumn tableName="ordine_cliente">
+			<column name="chiuso" type="BIT(1)" />
+		</addColumn>
+		<addDefaultValue tableName="ordine"
+			columnName="chiuso" defaultValueBoolean="false" />
+		<addDefaultValue tableName="ordine_cliente"
+			columnName="chiuso" defaultValueBoolean="false" />
+	</changeSet>
+
+	<changeSet id="100011" author="Tutino">
+		<addColumn tableName="risorsa">
+			<column name="ore_lavorative_sett" type="INT" />
+		</addColumn>
+		<addDefaultValue tableName="risorsa"
+			columnName="ore_lavorative_sett" defaultValueNumeric="0" />
+	</changeSet>
+
+	
+ 	<changeSet id="100012" author="Tutino">
+ 		<createTable tableName="dash_content">
+ 			<column autoIncrement="true" name="id_dash_content" type="BIGINT">
+ 				<constraints nullable="false" primaryKey="true" />
+ 			</column>
+ 			<column name="contenuto" type="VARCHAR(2555)" />
+ 			<column name="autore" type="VARCHAR(255)"/>
+ 		</createTable>
+ 	</changeSet>
+
+	<changeSet id="100013" author="Tutino">
+		<modifyDataType tableName="dash_content"
+			columnName="contenuto" newDataType="MEDIUMTEXT" />
+	</changeSet>
+
+	<changeSet id="100014" author="Tutino">
+		<dropColumn tableName="dash_content">
+			<column name="contenuto" />
+		</dropColumn>
+		<dropColumn tableName="dash_content">
+			<column name="autore" />
+		</dropColumn>
+		<addColumn tableName="dash_content">
+			<column name="contenuto" type="MEDIUMTEXT" />
+		</addColumn>
+		<addColumn tableName="dash_content">
+			<column name="autore" type="VARCHAR(255)" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="100020" author="Tutino">
+		<modifyDataType tableName="dash_content"
+			columnName="contenuto" newDataType="MEDIUMTEXT" />
+	</changeSet>
+
+	<changeSet id="100023" author="Tutino">
+		<modifyDataType tableName="dash_content"
+			columnName="contenuto" newDataType="varchar(5000)" />
+	</changeSet>
+
+	<changeSet id="100024" author="Monterosso">
+		<modifyDataType columnName="note_invio"
+			newDataType="varchar(2000)" tableName="rapporto_attivita" />
+	</changeSet>
+
+
+	<changeSet author="Monterosso" id="100025">
+		<addColumn tableName="azienda">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="azienda">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="azienda">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="azienda">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet author="Monterosso" id="100026">
+		<addColumn tableName="account">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="account">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="account">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="account">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet author="Monterosso" id="100026">
+		<addColumn tableName="account">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="account">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="account">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="account">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet author="Monterosso" id="100027">
+		<addColumn tableName="budget">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="budget">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="budget">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="budget">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+
+		<addColumn tableName="certificazione">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="certificazione">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="certificazione">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="certificazione">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+
+		<addColumn tableName="commessa">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="commessa">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="commessa">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="commessa">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+
+		<addColumn tableName="costo_risorsa">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="costo_risorsa">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="costo_risorsa">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="costo_risorsa">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+
+		<addColumn tableName="dash_content">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="dash_content">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="dash_content">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="dash_content">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+
+		<addColumn tableName="documento">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="documento">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="documento">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="documento">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+
+		<addColumn tableName="event">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="event">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="event">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="event">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+
+		<addColumn tableName="nel">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="nel">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="nel">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="nel">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+
+		<addColumn tableName="oda">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="oda">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="oda">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="oda">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+
+		<addColumn tableName="ordine">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="ordine">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="ordine">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="ordine">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+
+		<addColumn tableName="ordine_cliente">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="ordine_cliente">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="ordine_cliente">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="ordine_cliente">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+
+		<addColumn tableName="rapporto_attivita">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="rapporto_attivita">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="rapporto_attivita">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="rapporto_attivita">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+
+		<addColumn tableName="rapporto_lavoro">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="rapporto_lavoro">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="rapporto_lavoro">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="rapporto_lavoro">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+
+		<addColumn tableName="registro_offerta">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="registro_offerta">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="registro_offerta">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="registro_offerta">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+
+		<addColumn tableName="risorsa">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="risorsa">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="risorsa">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="risorsa">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+
+		<addColumn tableName="tariffa">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="tariffa">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="tariffa">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="tariffa">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+
+		<addColumn tableName="tipo_certificazione">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="tipo_certificazione">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="tipo_certificazione">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="tipo_certificazione">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+
+		<addColumn tableName="tipo_rapporto_lavoro">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="tipo_rapporto_lavoro">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="tipo_rapporto_lavoro">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="tipo_rapporto_lavoro">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+
+		<addColumn tableName="tipo_stato_rapporto">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="tipo_stato_rapporto">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="tipo_stato_rapporto">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="tipo_stato_rapporto">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+
+		<addColumn tableName="tipo_titolo_studio">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="tipo_titolo_studio">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="tipo_titolo_studio">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="tipo_titolo_studio">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet author="Monterosso" id="100028">
+		<addColumn tableName="user">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="user">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="user">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="user">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+	</changeSet>
+
+
+	<changeSet author="Monterosso" id="100029">
+		<createTable tableName="ruolo">
+			<column autoIncrement="true" name="id_ruolo" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="descrizione" type="VARCHAR(255)" />
+		</createTable>
+
+
+		<createTable tableName="user_ruolo">
+			<column name="id_ruolo" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="id_user" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet author="Monterosso" id="100030">
+		<addColumn tableName="ruolo">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="ruolo">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="ruolo">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="ruolo">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet author="Monterosso" id="100031">
+		<createTable tableName="pagina">
+			<column autoIncrement="true" name="id_pagina" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="title" type="VARCHAR(255)" />
+			<column name="url" type="VARCHAR(255)" />
+			<column name="start_url" type="VARCHAR(255)" />
+			<column name="data_creazione" type="datetime" />
+			<column name="data_modifica" type="datetime" />
+			<column name="utente_creazione" type="VARCHAR(255)" />
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</createTable>
+
+		<createTable tableName="pagina_ruolo">
+			<column name="id_ruolo" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="id_pagina" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet author="Monterosso" id="100032">
+		<renameTable newTableName="voce_menu"
+			oldTableName="pagina" />
+		<renameTable newTableName="voce_menu_ruolo"
+			oldTableName="pagina_ruolo" />
+		<renameColumn tableName="voce_menu_ruolo"
+			newColumnName="id_voce_menu" oldColumnName="id_pagina"
+			columnDataType="BIGINT" />
+	</changeSet>
+
+	<changeSet author="Monterosso" id="100033">
+		<renameColumn tableName="voce_menu"
+			newColumnName="id_voce_menu" oldColumnName="id_pagina"
+			columnDataType="BIGINT" />
+	</changeSet>
+
+	<changeSet author="Monterosso" id="100034">
+		<addAutoIncrement 
+			columnName="id_voce_menu"
+			columnDataType="BIGINT"
+			tableName="voce_menu"/> 
+	</changeSet>
+	
+	<changeSet author="Monterosso" id="100035">
+		<addColumn tableName="voce_menu">
+			<column name="nome_icona" type="VARCHAR(100)" />
+		</addColumn>
+	</changeSet>
+	
+	<changeSet author="Monterosso" id="100036">
+		<addColumn tableName="voce_menu_ruolo">
+			<column name="data_creazione" type="datetime" />
+		</addColumn>
+		<addColumn tableName="voce_menu_ruolo">
+			<column name="data_modifica" type="datetime" />
+		</addColumn>
+		<addColumn tableName="voce_menu_ruolo">
+			<column name="utente_creazione" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="voce_menu_ruolo">
+			<column name="utente_modifica" type="VARCHAR(255)" />
+		</addColumn>
+	</changeSet>
+	
+	<changeSet author="Monterosso" id="100037">
+		<addColumn tableName="voce_menu_ruolo">
+			<column autoIncrement="true" name="id_voce_menu_ruolo" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+		</addColumn>
+		<addColumn tableName="voce_menu_ruolo">
+			<column name="elimina" type="boolean">
+			</column>
+		</addColumn>
+		<addColumn tableName="voce_menu_ruolo">
+			<column name="modifica" type="boolean">
+			</column>
+		</addColumn>
+		<addColumn tableName="voce_menu_ruolo">
+			<column name="visualizza" type="boolean">
+			</column>
+		</addColumn>
+	</changeSet>
+	<changeSet id="22032022" author="Silvano">
+		<addColumn tableName="event">
+			<column name="azienda_risorsa" type="INT" />
+		</addColumn>
+	</changeSet>
+	<changeSet id="22032022-1" author="Silvano">
+		<modifyDataType tableName="event"
+						columnName="azienda_risorsa"
+						newDataType="VARCHAR(255)"
+		/>
+	</changeSet>
+	<changeSet id="10052022-1" author="Alessio">
+		<modifyDataType tableName="oda"
+						columnName="importo"
+						newDataType="DOUBLE"
+		/>
+		<modifyDataType tableName="nel"
+						columnName="importo"
+						newDataType="DOUBLE"
+		/>
+	</changeSet>
+	<changeSet id="19072022-1" author="Ivan">
+		<addColumn tableName="risorsa">
+			<column name="sede" type="VARCHAR(255)" />
+		</addColumn>
+	</changeSet>
+	<changeSet id="19072022-2" author="Simone">
+		<createTable tableName="asset">
+			<column name="id_asset" type="BIGINT" autoIncrement="true">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="tipologia" type="VARCHAR(50)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="modello" type="VARCHAR(255)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="numero_seriale" type="VARCHAR(255)" />
+			<column name="numero_telefonico" type="VARCHAR(20)" />
+			<column name="imei" type="VARCHAR(255)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="note" type="VARCHAR(255)" />
+			<column name="asset_key" type="VARCHAR(255)" />
+			<column name="assegnato" type="BOOLEAN" />
+		</createTable>
+
+		<createTable tableName="storico_asset">
+			<column name="id_storico_asset" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="id_risorsa" type="BIGINT" />
+			<column name="id_asset" type="BIGINT" />
+			<column name="asset_key_consegna" type="VARCHAR(255)" />
+			<column name="asset_key_rilascio" type="VARCHAR(255)" />
+			<column name="data_inizio" type="DATETIME" />
+			<column name="data_fine" type="DATETIME" />
+		</createTable>
+
+		<addForeignKeyConstraint
+				baseColumnNames="id_risorsa" baseTableName="storico_asset"
+				constraintName="FKsehk4gxut97t98lqd78ipcaup" deferrable="false"
+				initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+				referencedColumnNames="id_risorsa" referencedTableName="risorsa"
+				validate="true" />
+		<addForeignKeyConstraint
+				baseColumnNames="id_asset" baseTableName="storico_asset"
+				constraintName="FKsehk4gxut97t98lqd78ipcauq" deferrable="false"
+				initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+				referencedColumnNames="id_asset" referencedTableName="asset"
+				validate="true" />
+	</changeSet>
+
+	<changeSet id="20072022-1" author="Simone">
+		<addAutoIncrement tableName="storico_asset" columnName="id_storico_asset" columnDataType="BIGINT"/>
+	</changeSet>
+
+<<<<<<< HEAD
+	<changeSet id="31082022-1" author="Simone">
+		<addColumn tableName="asset">
+			<column name="processore" type="VARCHAR(50)" />
+			<column name="dismesso" type="BOOLEAN" />
+			<column name="data_dismesso" type="DATETIME" />
+		</addColumn>
+	</changeSet>
+=======
+	<changeSet id="04082022-1" author="Andrea">
+		<createTable tableName="richiesta_aziendale">
+			<column name="id_richiesta_aziendale" type="BIGINT" autoIncrement="true">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="id_risorsa" type="BIGINT" />
+			<column name="id_commessa" type="BIGINT" />
+			<column name="data_richiesta" type="DATETIME" />
+			<column name="documento_key" type="VARCHAR(255)" />
+			<column name="note" type="VARCHAR(255)" />
+			<column name="stato_richiesta_aziendale" type="VARCHAR(50)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="codice_certificato" type="VARCHAR(255)" />
+			<column name="data_cambio_stato" type="DATETIME" />
+		</createTable>
+
+		<createTable tableName="slot_richiesta">
+			<column name="id_slot_richiesta" type="BIGINT" autoIncrement="true">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="id_richiesta_aziendale" type="BIGINT" />
+			<column name="data_inizio" type="DATETIME" />
+			<column name="data_fine" type="DATETIME" />
+			<column name="numero_ore" type="INT" />
+		</createTable>
+
+		<addForeignKeyConstraint
+				baseColumnNames="id_risorsa" baseTableName="richiesta_aziendale"
+				constraintName="FKsehk4gxut97t98lqd78ipcaur" deferrable="false"
+				initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+				referencedColumnNames="id_risorsa" referencedTableName="risorsa"
+				validate="true" />
+		<addForeignKeyConstraint
+				baseColumnNames="id_commessa" baseTableName="richiesta_aziendale"
+				constraintName="FKsehk4gxut97t98lqd78ipcaus" deferrable="false"
+				initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+				referencedColumnNames="id_commessa" referencedTableName="commessa"
+				validate="true" />
+		<addForeignKeyConstraint
+				baseColumnNames="id_richiesta_aziendale" baseTableName="slot_richiesta"
+				constraintName="FKsehk4gxut97t98lqd78ipcaut" deferrable="false"
+				initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+				referencedColumnNames="id_richiesta_aziendale" referencedTableName="richiesta_aziendale"
+				validate="true" />
+
+	</changeSet>
+
+
+	<changeSet id="05082022-1" author="Andrea">
+		<addColumn tableName="richiesta_aziendale">
+			<column name="note_invio" type="VARCHAR(255)" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet  author="Andrea"  id="05082022-2">
+		<dropForeignKeyConstraint
+								   baseTableName="slot_richiesta"
+								   baseTableSchemaName="controllogestione"
+								   constraintName="FKsehk4gxut97t98lqd78ipcaut"/>
+	</changeSet>
+
+
+>>>>>>> mev-gestione-richieste
+
+	<changeSet id="01092022-1" author="Simone">
+		<addColumn tableName="asset">
+			<column name="data_acquisto" type="DATETIME" />
+		</addColumn>
+	</changeSet>
+</databaseChangeLog>

@@ -3,6 +3,15 @@ server:
   port: 8080
 
 spring:
+
+    liquibase:
+      enabled: true
+      change-log: classpath:db.changeset/master.xml
+      user: centroscommesse
+      password: zpsQUnq30qn1IUC
+#      changeLog: "classpath:db.changelog-master.xml"
+      dropFirst: true
+
     datasource:
         url: jdbc:mysql://solvingteamdev.cgu83m9eljvq.eu-south-1.rds.amazonaws.com:3306/centroscommessedev?allowPublicKeyRetrieval=true&useSSL=FALSE&serverTimezone=Europe/Rome
         username: centroscommesse
